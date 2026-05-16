@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sarah Aulia - Virtual Assistant Modern untuk Bisnis yang Ingin Lebih Produktif.">
+    <title>Sarah Aulia | Premium Virtual Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        white: {
+                            DEFAULT: '#FFFFFF',
+                            50: '#F8FAFC',
+                            100: '#F1F5F9',
+                        },
+                        navy: {
+                            800: '#1E293B',
+                            900: '#0F172A',
+                            950: '#0B1120',
+                        },
+                        purple: {
+                            100: '#E0E7FF', // Muted periwinkle
+                            400: '#A78BFA',
+                            500: '#8B5CF6',
+                            600: '#7C3AED',
+                        },
+                        cyan: {
+                            300: '#67E8F9',
+                            400: '#22D3EE',
+                            500: '#06B6D4',
+                        },
+                        charcoal: {
+                            700: '#334155',
+                            800: '#1E293B',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(15, 23, 42, 0.05)',
+                        'card': '0 15px 35px -10px rgba(15, 23, 42, 0.08)',
+                        'glow-cyan': '0 0 30px rgba(34, 211, 238, 0.3)',
+                        'glow-purple': '0 0 30px rgba(139, 92, 246, 0.3)',
+                        'neon': '0 0 20px rgba(34, 211, 238, 0.5), inset 0 0 10px rgba(34, 211, 238, 0.2)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out infinite 3s',
+                        'pulse-wa': 'pulse-wa 2s infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        'pulse-wa': {
+                            '0%': { boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.5)' },
+                            '70%': { boxShadow: '0 0 0 15px rgba(37, 211, 102, 0)' },
+                            '100%': { boxShadow: '0 0 0 0 rgba(37, 211, 102, 0)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F8FAFC; color: #1E293B; }
+
+        /* Translation Toggle Logic */
+        body.lang-en .id-text { display: none !important; }
+        body:not(.lang-en) .en-text { display: none !important; }
+
+        /* Glass Navbar */
+        .glass-nav {
+            background: rgba(248, 250, 252, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+            transition: all 0.4s ease;
+        }
+        .glass-nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.1);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* Nav Link Underline */
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #8B5CF6;
+            transition: width 0.3s ease-in-out;
+            border-radius: 2px;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Gradients */
+        .bg-mesh-gradient {
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-color: #0F172A;
+        }
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #8B5CF6 0%, #22D3EE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        /* Hover Zoom */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .img-zoom-container:hover .img-zoom { transform: scale(1.05); }
+
+        /* Accordion Logic */
+        .faq-content {
+            transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+            max-height: 0; opacity: 0; overflow: hidden;
+        }
+        .faq-content.open { max-height: 300px; opacity: 1; padding-bottom: 1.5rem; }
+        .faq-icon { transition: transform 0.4s ease; }
+        .faq-icon.open { transform: rotate(180deg); }
+
+        /* Timeline Process */
+        .process-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, #8B5CF6, #22D3EE, transparent);
+        }
+        @media (min-width: 768px) {
+            .process-line::before { left: 50%; transform: translateX(-50%); }
+        }
+
+        .hover-lift { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: var(--tw-shadow-card); }
+    </style>
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-purple-500 selection:text-white">
+
+    <!-- ================= 1. STICKY NAVBAR ================= -->
+    <nav id="navbar" class="fixed w-full z-[100] glass-nav py-4 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Brand Logo -->
+                <a href="#" class="flex-shrink-0 flex items-center gap-3 group">
+                    <div class="w-10 h-10 bg-navy-900 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-glass overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-cyan-400 opacity-20"></div>
+                        <span class="relative z-10">SA</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-lg tracking-tight text-navy-900 leading-none">Sarah Aulia</span>
+                        <span class="text-[9px] font-bold text-purple-600 uppercase tracking-[0.2em] mt-0.5">Virtual Assistant</span>
+                    </div>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#tentang" class="nav-link text-sm font-semibold text-charcoal-700 hover:text-purple-600 transition-colors">
+                        <span class="id-text">Tentang</span><span class="en-text">About</span>
+                    </a>
+                    <a href="#layanan" class="nav-link text-sm font-semibold text-charcoal-700 hover:text-purple-600 transition-colors">
+                        <span class="id-text">Layanan</span><span class="en-text">Services</span>
+                    </a>
+                    <a href="#portfolio" class="nav-link text-sm font-semibold text-charcoal-700 hover:text-purple-600 transition-colors">Portfolio</a>
+                    <a href="#tools" class="nav-link text-sm font-semibold text-charcoal-700 hover:text-purple-600 transition-colors">Tools</a>
+                    <a href="#testimoni" class="nav-link text-sm font-semibold text-charcoal-700 hover:text-purple-600 transition-colors">
+                        <span class="id-text">Testimoni</span><span class="en-text">Testimonials</span>
+                    </a>
+                    <a href="#faq" class="nav-link text-sm font-semibold text-charcoal-700 hover:text-purple-600 transition-colors">FAQ</a>
+                </div>
+
+                <!-- Desktop CTA & Language Switcher -->
+                <div class="hidden lg:flex items-center gap-5 pl-6 border-l border-slate-200">
+                    <!-- Language Toggle -->
+                    <div class="flex items-center gap-2 text-xs font-bold">
+                        <button onclick="switchLang('en', event)" id="btn-en-desk" class="text-charcoal-700 hover:text-purple-600 transition-colors cursor-pointer focus:outline-none">EN</button>
+                        <span class="text-slate-300 font-normal">|</span>
+                        <button onclick="switchLang('id', event)" id="btn-id-desk" class="text-purple-600 transition-colors cursor-pointer focus:outline-none">IN</button>
+                    </div>
+                    
+                    <a href="#cta" class="inline-flex items-center justify-center px-6 py-2.5 bg-navy-900 hover:bg-purple-600 text-white text-sm font-bold rounded-full transition-all duration-300 shadow-md transform hover:-translate-y-0.5 group">
+                        Book Consultation <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button & Language Switcher -->
+                <div class="lg:hidden flex items-center gap-3">
+                    <!-- Mobile Language Toggle -->
+                    <div class="flex items-center gap-1.5 text-[10px] font-bold border-r border-slate-200 pr-3 mr-1">
+                        <button onclick="switchLang('en', event)" id="btn-en-mob" class="text-charcoal-700 hover:text-purple-600 transition-colors cursor-pointer focus:outline-none">EN</button>
+                        <span class="text-slate-300 font-normal">|</span>
+                        <button onclick="switchLang('id', event)" id="btn-id-mob" class="text-purple-600 transition-colors cursor-pointer focus:outline-none">IN</button>
+                    </div>
+                    
+                    <a href="#cta" class="text-[10px] font-bold bg-navy-900 text-white px-4 py-2 rounded-full shadow-sm uppercase tracking-wider hidden sm:block">
+                        <span class="id-text">Let's Talk</span><span class="en-text">Let's Talk</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-navy-900 focus:outline-none ml-1">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-xl border-t border-slate-200 absolute w-full shadow-2xl pb-6 top-full left-0">
+            <div class="px-4 pt-4 space-y-1">
+                <a href="#tentang" class="block px-4 py-3 text-sm font-bold text-charcoal-700 hover:bg-slate-50 rounded-xl">
+                    <span class="id-text">Tentang Sarah</span><span class="en-text">About Sarah</span>
+                </a>
+                <a href="#layanan" class="block px-4 py-3 text-sm font-bold text-charcoal-700 hover:bg-slate-50 rounded-xl">
+                    <span class="id-text">Expertise & Layanan</span><span class="en-text">Expertise & Services</span>
+                </a>
+                <a href="#portfolio" class="block px-4 py-3 text-sm font-bold text-charcoal-700 hover:bg-slate-50 rounded-xl">Project Showcase</a>
+                <a href="#tools" class="block px-4 py-3 text-sm font-bold text-charcoal-700 hover:bg-slate-50 rounded-xl">Tools & Platform</a>
+                <a href="#faq" class="block px-4 py-3 text-sm font-bold text-charcoal-700 hover:bg-slate-50 rounded-xl">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ================= 2. HERO PERSONAL BRANDING ================= -->
+        <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-white-50">
+            <!-- Background Blurs for Tech/AI Vibe -->
+            <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+                <div class="absolute top-0 -left-40 w-96 h-96 bg-purple-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+                <div class="absolute top-0 -right-40 w-96 h-96 bg-cyan-300/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+                <div class="absolute -bottom-40 left-20 w-96 h-96 bg-blue-300/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center flex flex-col-reverse lg:flex-row">
+                    
+                    <!-- Left: Content -->
+                    <div class="text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left mt-10 lg:mt-0">
+                        <p class="text-[10px] md:text-xs text-purple-600 font-bold uppercase tracking-[0.2em] mb-4">
+                            <span class="id-text">Demo Template Landing Page Personal Brand - UP2WebKit</span>
+                            <span class="en-text">Personal Brand Landing Page Demo - UP2WebKit</span>
+                        </p>
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-charcoal-700 font-bold text-[10px] mb-6 uppercase tracking-widest shadow-sm">
+                            <span class="relative flex h-2 w-2">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                            <span class="id-text">Available for Work</span><span class="en-text">Available for Work</span>
+                        </div>
+                        
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-navy-900 tracking-tight leading-[1.1] mb-6">
+                            <span class="id-text">Virtual Assistant Modern untuk Bisnis yang Ingin <br class="hidden lg:block"> <span class="text-gradient-primary">Lebih Produktif.</span></span>
+                            <span class="en-text">Modern Virtual Assistant for Businesses that Want to be <br class="hidden lg:block"> <span class="text-gradient-primary">More Productive.</span></span>
+                        </h1>
+                        
+                        <p class="text-sm md:text-base text-charcoal-700 sm:text-lg leading-relaxed font-medium mb-8 max-w-lg mx-auto lg:mx-0">
+                            <span class="id-text">Membantu bisnis, *founder*, dan *content creator* mengelola operasional harian, admin, *scheduling*, hingga *task management* secara profesional dan efisien.</span>
+                            <span class="en-text">Helping businesses, founders, and content creators manage daily operations, admin, scheduling, and task management professionally and efficiently.</span>
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start mb-10">
+                            <a href="#cta" class="px-8 py-3.5 md:py-4 text-sm font-bold rounded-full text-white bg-navy-900 hover:bg-purple-600 transition-all duration-300 shadow-card text-center hover:-translate-y-1 transform">
+                                Book Free Consultation
+                            </a>
+                            <a href="#portfolio" class="px-8 py-3.5 md:py-4 text-sm font-bold rounded-full text-navy-900 bg-white hover:bg-slate-50 transition-all text-center flex items-center justify-center border border-slate-200">
+                                <span class="id-text">Lihat Portfolio</span><span class="en-text">View Portfolio</span>
+                            </a>
+                        </div>
+
+                        <!-- Trust Metrics -->
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 items-center pt-6 border-t border-slate-200/60">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs"><i class="fas fa-check"></i></div>
+                                <span class="text-xs font-bold text-navy-900">
+                                    <span class="id-text">50+ Happy Client</span><span class="en-text">50+ Happy Clients</span>
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-cyan-100/50 text-cyan-600 flex items-center justify-center text-xs"><i class="fas fa-laptop-house"></i></div>
+                                <span class="text-xs font-bold text-navy-900">100% Remote Ready</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs"><i class="fas fa-bolt"></i></div>
+                                <span class="text-xs font-bold text-navy-900">Fast Response</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Aesthetic Portrait & Setup -->
+                    <div class="lg:col-span-6 relative w-[85%] sm:w-2/3 lg:w-full max-w-[450px] lg:max-w-none mx-auto">
+                        <!-- Main Image -->
+                        <div class="relative z-20 rounded-[2rem] overflow-hidden aspect-[4/5] shadow-2xl border border-white/50 animate-float bg-slate-100">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Sarah Aulia" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Floating Card 1 -->
+                        <div class="absolute top-1/4 -left-4 md:-left-10 z-30 glass-card p-3 md:p-4 rounded-2xl flex items-center gap-3 shadow-glass animate-float-delayed border border-white">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center text-white text-lg shrink-0 shadow-glow-cyan"><i class="fas fa-robot"></i></div>
+                            <div>
+                                <p class="text-[10px] md:text-xs text-navy-900 font-extrabold uppercase tracking-wider leading-tight">AI Productivity</p>
+                                <p class="text-[8px] md:text-[9px] text-charcoal-700 font-medium">Powered Workflow</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Card 2 -->
+                        <div class="absolute bottom-1/4 -right-4 md:-right-8 z-30 bg-white/90 backdrop-blur-md p-3 md:p-4 rounded-2xl flex flex-col items-center shadow-card border border-slate-100 animate-float">
+                            <div class="flex -space-x-2 mb-2">
+                                <img class="w-6 h-6 rounded-full border-2 border-white" src="https://ui-avatars.com/api/?name=A&background=E0E7FF&color=4F46E5" alt="User">
+                                <img class="w-6 h-6 rounded-full border-2 border-white" src="https://ui-avatars.com/api/?name=B&background=FCE7F3&color=DB2777" alt="User">
+                                <img class="w-6 h-6 rounded-full border-2 border-white" src="https://ui-avatars.com/api/?name=C&background=FEF3C7&color=D97706" alt="User">
+                            </div>
+                            <div class="flex text-yellow-400 text-[8px] mb-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="text-[8px] md:text-[9px] text-navy-900 font-extrabold uppercase tracking-widest text-center leading-tight">Top Rated<br>Freelancer</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 3. ABOUT ME ================= -->
+        <section id="tentang" class="py-20 md:py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-5 relative">
+                        <div class="rounded-3xl overflow-hidden aspect-square img-zoom-container shadow-card border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80" alt="Workspace" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-navy-900 text-white p-6 rounded-2xl shadow-xl hidden md:block">
+                            <h4 class="text-3xl font-extrabold mb-1 text-white">4+</h4>
+                            <p class="text-[10px] uppercase tracking-widest font-bold text-cyan-400">Years Remote<br>Experience</p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 lg:pl-10">
+                        <span class="text-purple-600 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+                            <span class="id-text">Tentang Sarah</span><span class="en-text">About Sarah</span>
+                        </span>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-navy-900 tracking-tight mb-6">
+                            <span class="id-text">Partner Andal di Balik Layar Bisnis Anda.</span>
+                            <span class="en-text">Your Reliable Partner Behind the Scenes.</span>
+                        </h2>
+                        
+                        <div class="prose text-charcoal-700 font-medium text-sm md:text-base leading-relaxed mb-8">
+                            <p class="mb-4">
+                                <span class="id-text">Halo! Saya Sarah Aulia, seorang *Virtual Assistant* profesional yang berdedikasi membantu para pemimpin bisnis, agensi, dan *creator* untuk merebut kembali waktu berharga mereka.</span>
+                                <span class="en-text">Hello! I am Sarah Aulia, a professional Virtual Assistant dedicated to helping business leaders, agencies, and creators reclaim their valuable time.</span>
+                            </p>
+                            <p class="mb-4">
+                                <span class="id-text">Saya percaya bahwa bisnis yang sukses dibangun di atas sistem operasional yang solid. Dengan pengalaman lebih dari 4 tahun bekerja secara *remote* dan didukung oleh penguasaan berbagai *tools AI & productivity* terkini, saya siap merapikan alur kerja Anda yang berantakan.</span>
+                                <span class="en-text">I believe successful businesses are built on solid operational systems. With over 4 years of remote experience and mastery of the latest AI & productivity tools, I am ready to streamline your workflows.</span>
+                            </p>
+                            <p class="italic text-navy-900 font-bold">
+                                *You focus on the big picture, I'll handle the details.*
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                                <i class="fas fa-bullseye text-cyan-500 mb-2 text-xl"></i>
+                                <h4 class="font-bold text-navy-900 text-sm mb-1">Detail-Oriented</h4>
+                                <p class="text-xs text-charcoal-700">
+                                    <span class="id-text">Akurasi tinggi dalam setiap *task* administrasi.</span>
+                                    <span class="en-text">High accuracy in every administrative task.</span>
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                                <i class="fas fa-rocket text-purple-500 mb-2 text-xl"></i>
+                                <h4 class="font-bold text-navy-900 text-sm mb-1">Tech-Savvy</h4>
+                                <p class="text-xs text-charcoal-700">
+                                    <span class="id-text">Cepat beradaptasi dengan *software* dan *platform* baru.</span>
+                                    <span class="en-text">Quick to adapt to new software and platforms.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 4. EXPERTISE & SERVICES ================= -->
+        <section id="layanan" class="py-20 md:py-24 bg-slate-50 border-y border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-purple-600 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+                        <span class="id-text">Expertise & Layanan</span><span class="en-text">Expertise & Services</span>
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-navy-900 tracking-tight mb-4">
+                        <span class="id-text">Solusi Operasional untuk Bisnis Anda</span>
+                        <span class="en-text">Operational Solutions for Your Business</span>
+                    </h2>
+                    <p class="text-charcoal-700 font-medium text-sm md:text-base">
+                        <span class="id-text">Berbagai layanan administratif dan teknis yang dapat saya tangani agar Anda bisa fokus pada pertumbuhan bisnis.</span>
+                        <span class="en-text">Various administrative and technical services I can handle so you can focus on business growth.</span>
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Service 1 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 hover-lift group">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-5 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Admin Support</h3>
+                        <p class="text-xs text-charcoal-700 mb-4 line-clamp-3">
+                            <span class="id-text">Manajemen dokumen, *file organization*, persiapan laporan, dan tugas administratif harian lainnya secara rapi dan sistematis.</span>
+                            <span class="en-text">Document management, file organization, report preparation, and other daily admin tasks neatly and systematically.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 hover-lift group">
+                        <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-xl mb-5 group-hover:bg-cyan-500 group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Calendar Management</h3>
+                        <p class="text-xs text-charcoal-700 mb-4 line-clamp-3">
+                            <span class="id-text">Pengaturan jadwal *meeting*, sinkronisasi kalender, dan pengingat harian agar tidak ada jadwal penting yang terlewat.</span>
+                            <span class="en-text">Setting meeting schedules, calendar sync, and daily reminders so no important schedule is missed.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 hover-lift group">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Email Handling</h3>
+                        <p class="text-xs text-charcoal-700 mb-4 line-clamp-3">
+                            <span class="id-text">Penyortiran inbox, membalas email rutin, *tagging* prioritas, hingga *inbox zero management* harian.</span>
+                            <span class="en-text">Inbox sorting, replying to routine emails, priority tagging, to daily inbox zero management.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 hover-lift group">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-5 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Customer Service</h3>
+                        <p class="text-xs text-charcoal-700 mb-4 line-clamp-3">
+                            <span class="id-text">Merespons pertanyaan klien/customer via WhatsApp, DM, atau *ticketing system* dengan ramah dan profesional.</span>
+                            <span class="en-text">Responding to client/customer inquiries via WhatsApp, DM, or ticketing systems warmly and professionally.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 5 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 hover-lift group">
+                        <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-xl mb-5 group-hover:bg-cyan-500 group-hover:text-white transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Social Media Support</h3>
+                        <p class="text-xs text-charcoal-700 mb-4 line-clamp-3">
+                            <span class="id-text">Penjadwalan post, riset hashtag, membalas komentar, dan *basic engagement* untuk menjaga akun tetap aktif.</span>
+                            <span class="en-text">Post scheduling, hashtag research, replying to comments, and basic engagement to keep accounts active.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 6 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 hover-lift group">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Data Entry & CRM</h3>
+                        <p class="text-xs text-charcoal-700 mb-4 line-clamp-3">
+                            <span class="id-text">Input data ke *spreadsheet*, pembaruan database pelanggan (CRM), dan memastikan validitas data secara berkala.</span>
+                            <span class="en-text">Data entry to spreadsheets, updating customer databases (CRM), and ensuring data validity periodically.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 7 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 hover-lift group">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-5 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">AI Assistance</h3>
+                        <p class="text-xs text-charcoal-700 mb-4 line-clamp-3">
+                            <span class="id-text">Pemanfaatan ChatGPT dan AI tools untuk merapikan notulensi *meeting*, *drafting copy*, hingga rekap dokumen cepat.</span>
+                            <span class="en-text">Utilizing ChatGPT and AI tools to organize meeting minutes, draft copy, to quick document summaries.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 8 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 hover-lift group">
+                        <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-xl mb-5 group-hover:bg-cyan-500 group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Research Support</h3>
+                        <p class="text-xs text-charcoal-700 mb-4 line-clamp-3">
+                            <span class="id-text">Melakukan riset kompetitor, *lead generation* kontak, mencari referensi bahan konten, hingga merangkum data internet.</span>
+                            <span class="en-text">Conducting competitor research, lead generation, finding content references, to summarizing internet data.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <a href="#cta" class="inline-flex items-center text-sm font-bold text-purple-600 hover:text-purple-700 transition-colors group">
+                        <span class="id-text">Inquiry Layanan Lainnya</span><span class="en-text">Inquire Other Services</span> <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 5. PORTFOLIO / PROJECT SHOWCASE ================= -->
+        <section id="portfolio" class="py-20 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-cyan-500 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Project Showcase</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-navy-900 tracking-tight">
+                        <span class="id-text">Kualitas & Output Kerja</span><span class="en-text">Quality & Work Output</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Project 1 -->
+                    <div class="group rounded-[1.5rem] overflow-hidden border border-slate-200 hover:shadow-card transition-all duration-300">
+                        <div class="aspect-video overflow-hidden bg-slate-100 relative">
+                            <!-- Dashboard aesthetic placeholder -->
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Dashboard" class="w-full h-full object-cover img-zoom">
+                            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-navy-900 shadow-sm"><i class="fas fa-table mr-1"></i> Data & CRM</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-navy-900 mb-1">CRM Database Migration</h3>
+                            <p class="text-xs text-charcoal-700">
+                                <span class="id-text">Merapikan 500+ data *leads* dari spreadsheet lama ke sistem CRM modern dengan segmentasi yang akurat.</span>
+                                <span class="en-text">Organizing 500+ leads data from old spreadsheets to a modern CRM system with accurate segmentation.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="group rounded-[1.5rem] overflow-hidden border border-slate-200 hover:shadow-card transition-all duration-300">
+                        <div class="aspect-video overflow-hidden bg-slate-100 relative">
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=600&q=80" alt="Social Media" class="w-full h-full object-cover img-zoom">
+                            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-navy-900 shadow-sm"><i class="fab fa-instagram mr-1"></i> Socmed Admin</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-navy-900 mb-1">Social Media Scheduling</h3>
+                            <p class="text-xs text-charcoal-700">
+                                <span class="id-text">Mengelola *content calendar*, menjadwalkan post harian via *tools scheduling*, dan membalas rata-rata 100+ DM per hari.</span>
+                                <span class="en-text">Managing content calendars, scheduling daily posts via tools, and replying to an average of 100+ DMs per day.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="group rounded-[1.5rem] overflow-hidden border border-slate-200 hover:shadow-card transition-all duration-300">
+                        <div class="aspect-video overflow-hidden bg-slate-100 relative">
+                            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=600&q=80" alt="Notion Setup" class="w-full h-full object-cover img-zoom top-0 object-top">
+                            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-navy-900 shadow-sm"><i class="fas fa-sitemap mr-1"></i> Workflow Setup</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-navy-900 mb-1">Notion Workspace Setup</h3>
+                            <p class="text-xs text-charcoal-700">
+                                <span class="id-text">Membangun *dashboard* operasional di Notion untuk agensi kreatif, termasuk *task tracker* dan *SOP documentation*.</span>
+                                <span class="en-text">Building operational dashboards in Notion for creative agencies, including task trackers and SOP documentation.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 6. WORK PROCESS ================= -->
+        <section class="py-24 bg-navy-900 text-white relative overflow-hidden">
+            <!-- subtle bg grid -->
+            <div class="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <span class="text-cyan-400 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Workflow</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-white">
+                        <span class="id-text">Bagaimana Saya Bekerja?</span><span class="en-text">How Do I Work?</span>
+                    </h2>
+                    <p class="text-slate-400 font-medium text-sm md:text-base">
+                        <span class="id-text">Proses terstruktur untuk memastikan komunikasi yang lancar dan hasil kerja yang sesuai target Anda.</span>
+                        <span class="en-text">Structured process to ensure smooth communication and work results that meet your targets.</span>
+                    </p>
+                </div>
+
+                <div class="relative process-line">
+                    <!-- Step 1 -->
+                    <div class="relative flex items-center md:items-start mb-12 pl-12 md:pl-0 md:justify-between group">
+                        <div class="absolute left-[11px] md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-navy-900 border-4 border-purple-500 z-10 group-hover:bg-purple-500 transition-colors shadow-glow-purple"></div>
+                        <div class="md:w-5/12 md:text-right pr-0 md:pr-8 hidden md:block">
+                            <h4 class="text-lg font-bold text-white mb-1">1. Consultation Call</h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="id-text">Meeting awal 15-30 menit via Zoom untuk membahas *bottleneck* bisnis Anda dan mendefinisikan *scope of work*.</span>
+                                <span class="en-text">Initial 15-30 minute Zoom meeting to discuss your business bottlenecks and define the scope of work.</span>
+                            </p>
+                        </div>
+                        <div class="w-full md:w-5/12 pl-0 md:pl-8 block md:hidden">
+                            <h4 class="text-lg font-bold text-white mb-1">1. Consultation Call</h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="id-text">Meeting awal membahas *bottleneck* bisnis dan *scope of work*.</span>
+                                <span class="en-text">Initial meeting discussing business bottlenecks and scope of work.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative flex items-center md:items-start mb-12 pl-12 md:pl-0 md:justify-between group md:flex-row-reverse">
+                        <div class="absolute left-[11px] md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-navy-900 border-4 border-cyan-400 z-10 group-hover:bg-cyan-400 transition-colors shadow-glow-cyan"></div>
+                        <div class="w-full md:w-5/12 pl-0 md:pl-8 text-left">
+                            <h4 class="text-lg font-bold text-white mb-1">2. Task Planning</h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="id-text">Menyepakati jam kerja, prioritas tugas harian/mingguan, dan *tools* yang akan digunakan bersama.</span>
+                                <span class="en-text">Agreeing on working hours, daily/weekly task priorities, and tools to be used together.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative flex items-center md:items-start mb-12 pl-12 md:pl-0 md:justify-between group">
+                        <div class="absolute left-[11px] md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-navy-900 border-4 border-purple-500 z-10 group-hover:bg-purple-500 transition-colors shadow-glow-purple"></div>
+                        <div class="md:w-5/12 md:text-right pr-0 md:pr-8 hidden md:block">
+                            <h4 class="text-lg font-bold text-white mb-1">3. Workflow Setup</h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="id-text">Proses *onboarding*, pemberian akses ke *tools* (email, Trello/Notion, dll), dan persiapan komunikasi via Slack/WA.</span>
+                                <span class="en-text">Onboarding process, granting access to tools (email, Trello/Notion, etc), and preparing communication channels via Slack/WA.</span>
+                            </p>
+                        </div>
+                        <div class="w-full md:w-5/12 pl-0 md:pl-8 block md:hidden">
+                            <h4 class="text-lg font-bold text-white mb-1">3. Workflow Setup</h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="id-text">*Onboarding*, pemberian akses *tools*, dan persiapan jalur komunikasi.</span>
+                                <span class="en-text">Onboarding, granting tools access, and preparing communication channels.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="relative flex items-center md:items-start mb-12 pl-12 md:pl-0 md:justify-between group md:flex-row-reverse">
+                        <div class="absolute left-[11px] md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-navy-900 border-4 border-cyan-400 z-10 group-hover:bg-cyan-400 transition-colors shadow-glow-cyan"></div>
+                        <div class="w-full md:w-5/12 pl-0 md:pl-8 text-left">
+                            <h4 class="text-lg font-bold text-white mb-1">4. Daily Execution</h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="id-text">Pengeksekusian tugas-tugas secara independen dan profesional sesuai dengan *deadline* yang disepakati.</span>
+                                <span class="en-text">Independent and professional execution of tasks according to the agreed deadlines.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="relative flex items-center md:items-start pl-12 md:pl-0 md:justify-between group">
+                        <div class="absolute left-[11px] md:left-1/2 transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 border-4 border-navy-900 z-10 shadow-neon"></div>
+                        <div class="md:w-5/12 md:text-right pr-0 md:pr-8 hidden md:block">
+                            <h4 class="text-lg font-bold text-white mb-1">5. Weekly Reporting</h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="id-text">Penyampaian laporan ringkas progres kerja setiap akhir minggu untuk transparansi dan evaluasi.</span>
+                                <span class="en-text">Delivering concise work progress reports every weekend for transparency and evaluation.</span>
+                            </p>
+                        </div>
+                        <div class="w-full md:w-5/12 pl-0 md:pl-8 block md:hidden">
+                            <h4 class="text-lg font-bold text-white mb-1">5. Weekly Reporting</h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="id-text">Laporan ringkas progres kerja tiap akhir minggu untuk transparansi.</span>
+                                <span class="en-text">Concise progress report every weekend for transparency.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 7. CLIENT TESTIMONIAL ================= -->
+        <section id="testimoni" class="py-24 bg-white border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-purple-600 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Feedback</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-navy-900 tracking-tight">
+                        <span class="id-text">Apa Kata Klien Saya?</span><span class="en-text">What My Clients Say?</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Testi 1 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 md:p-8 border border-slate-200 shadow-sm hover:shadow-card transition-all">
+                        <div class="text-yellow-400 text-sm mb-4 flex"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-charcoal-700 font-medium text-sm leading-relaxed mb-6">
+                            <span class="id-text">"Sarah sangat membantu merapikan inbox email dan jadwal *meeting* harian saya yang tadinya sangat *chaos*. Kerjanya cepat, rapi, dan komunikasinya sangat profesional layaknya partner bisnis."</span>
+                            <span class="en-text">"Sarah was incredibly helpful in organizing my email inbox and daily meeting schedule which were previously chaotic. She works fast, neat, and communicates professionally like a business partner."</span>
+                        </p>
+                        
+                        <div class="flex items-center pt-4 border-t border-slate-100">
+                            <img src="https://ui-avatars.com/api/?name=Budi+S&background=F1F5F9&color=0F172A" alt="Client" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <h4 class="font-bold text-navy-900 text-xs">Budi S.</h4>
+                                <div class="flex flex-col gap-0.5 mt-1">
+                                    <span class="text-[9px] text-charcoal-700">Agency Founder</span>
+                                    <span class="text-[8px] text-cyan-600 font-bold uppercase tracking-widest flex items-center"><i class="fas fa-check-circle mr-1"></i> Verified Client</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testi 2 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 md:p-8 border border-slate-200 shadow-sm hover:shadow-card transition-all md:-translate-y-4">
+                        <div class="text-yellow-400 text-sm mb-4 flex"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-charcoal-700 font-medium text-sm leading-relaxed mb-6">
+                            <span class="id-text">"Paling suka sama inisiatifnya. Kalau ada task yang kurang jelas, Sarah bakal nanya detail atau langsung riset sendiri pakai *AI tools*. Benar-benar meringankan beban operasional *startup* kami."</span>
+                            <span class="en-text">"Love her initiative. If a task is unclear, Sarah will ask for details or research it herself using AI tools. Truly lightens our startup's operational load."</span>
+                        </p>
+                        
+                        <div class="flex items-center pt-4 border-t border-slate-100">
+                            <img src="https://ui-avatars.com/api/?name=Anita+K&background=E0E7FF&color=4F46E5" alt="Client" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <h4 class="font-bold text-navy-900 text-xs">Anita K.</h4>
+                                <div class="flex flex-col gap-0.5 mt-1">
+                                    <span class="text-[9px] text-charcoal-700">E-Commerce Owner</span>
+                                    <span class="text-[8px] text-cyan-600 font-bold uppercase tracking-widest flex items-center"><i class="fas fa-check-circle mr-1"></i> Verified Client</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testi 3 -->
+                    <div class="bg-white rounded-[1.5rem] p-6 md:p-8 border border-slate-200 shadow-sm hover:shadow-card transition-all">
+                        <div class="text-yellow-400 text-sm mb-4 flex"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <p class="text-charcoal-700 font-medium text-sm leading-relaxed mb-6">
+                            <span class="id-text">"Data entry dan rekap *spreadsheet* jadi beres tepat waktu. Task management-nya di Notion juga jelas banget jadi saya bisa gampang *tracking* apa aja yang udah dikerjain hari itu. Recommended VA!"</span>
+                            <span class="en-text">"Data entry and spreadsheet recaps are done on time. Her task management in Notion is very clear so I can easily track daily progress. Highly recommended VA!"</span>
+                        </p>
+                        
+                        <div class="flex items-center pt-4 border-t border-slate-100">
+                            <img src="https://ui-avatars.com/api/?name=Reza+D&background=E0F2FE&color=0284C7" alt="Client" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <h4 class="font-bold text-navy-900 text-xs">Reza D.</h4>
+                                <div class="flex flex-col gap-0.5 mt-1">
+                                    <span class="text-[9px] text-charcoal-700">Content Creator</span>
+                                    <span class="text-[8px] text-cyan-600 font-bold uppercase tracking-widest flex items-center"><i class="fas fa-check-circle mr-1"></i> Verified Client</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 8. TOOLS & PLATFORM ================= -->
+        <section id="tools" class="py-16 md:py-20 bg-slate-50 border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-xs font-bold text-charcoal-700 uppercase tracking-widest mb-8">Tools I Use Everyday</p>
+                
+                <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+                    <div class="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm text-charcoal-700 font-bold text-sm">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" alt="Notion" class="w-5 h-5 object-contain"> Notion
+                    </div>
+                    <div class="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm text-charcoal-700 font-bold text-sm">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Workspace" class="w-5 h-5 object-contain"> G-Workspace
+                    </div>
+                    <div class="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm text-charcoal-700 font-bold text-sm">
+                        <i class="fab fa-trello text-blue-500 text-lg"></i> Trello
+                    </div>
+                    <div class="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm text-charcoal-700 font-bold text-sm">
+                        <i class="fab fa-slack text-purple-600 text-lg"></i> Slack
+                    </div>
+                    <div class="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm text-charcoal-700 font-bold text-sm">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" class="w-5 h-5 object-contain"> ChatGPT
+                    </div>
+                    <div class="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm text-charcoal-700 font-bold text-sm">
+                        <i class="fas fa-file-excel text-green-600 text-lg"></i> Spreadsheets
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 9. PRICING PREVIEW ================= -->
+        <section class="py-24 bg-white relative">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-cyan-500 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Investment</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-navy-900 tracking-tight">Flexible Pricing Plans</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center">
+                    
+                    <!-- Basic -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 text-center hover-lift">
+                        <h3 class="font-bold text-navy-900 text-lg mb-2">Starter Support</h3>
+                        <p class="text-xs text-charcoal-700 mb-6">
+                            <span class="id-text">Cocok untuk kebutuhan admin ringan & part-time.</span>
+                            <span class="en-text">Suitable for light & part-time admin needs.</span>
+                        </p>
+                        <p class="text-2xl font-extrabold text-navy-900 mb-1">
+                            <span class="id-text">Rp 1.5jt <span class="text-sm font-medium text-charcoal-700">/ bulan</span></span>
+                            <span class="en-text">Rp 1.5M <span class="text-sm font-medium text-charcoal-700">/ month</span></span>
+                        </p>
+                        <p class="text-[10px] uppercase font-bold text-purple-600 tracking-wider mb-8">
+                            <span class="id-text">40 Jam / Bulan</span><span class="en-text">40 Hours / Month</span>
+                        </p>
+                        
+                        <a href="#cta" class="block w-full py-2.5 rounded-full border border-slate-300 text-sm font-bold text-charcoal-700 hover:bg-slate-50 transition-colors">
+                            <span class="id-text">Inquiry Paket</span><span class="en-text">Inquire Package</span>
+                        </a>
+                    </div>
+
+                    <!-- Pro -->
+                    <div class="bg-navy-900 rounded-3xl p-8 border border-navy-800 text-center shadow-card transform md:-translate-y-4 relative">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-cyan-400 text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest shadow-md">Most Popular</div>
+                        <h3 class="font-bold text-white text-lg mb-2">Business Support</h3>
+                        <p class="text-xs text-slate-400 mb-6">
+                            <span class="id-text">Paket ideal untuk *founder* aktif & operasional rutin.</span>
+                            <span class="en-text">Ideal package for active founders & routine operations.</span>
+                        </p>
+                        <p class="text-2xl font-extrabold text-white mb-1">
+                            <span class="id-text">Rp 3jt <span class="text-sm font-medium text-slate-400">/ bulan</span></span>
+                            <span class="en-text">Rp 3M <span class="text-sm font-medium text-slate-400">/ month</span></span>
+                        </p>
+                        <p class="text-[10px] uppercase font-bold text-cyan-400 tracking-wider mb-8">
+                            <span class="id-text">80 Jam / Bulan</span><span class="en-text">80 Hours / Month</span>
+                        </p>
+                        
+                        <a href="#cta" class="block w-full py-2.5 rounded-full bg-white text-sm font-bold text-navy-900 hover:bg-slate-100 transition-colors">Book Now</a>
+                    </div>
+
+                    <!-- Custom -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 text-center hover-lift">
+                        <h3 class="font-bold text-navy-900 text-lg mb-2">Exec. Assistant</h3>
+                        <p class="text-xs text-charcoal-700 mb-6">
+                            <span class="id-text">Support komprehensif, *full-time* dedicated VA.</span>
+                            <span class="en-text">Comprehensive support, full-time dedicated VA.</span>
+                        </p>
+                        <p class="text-2xl font-extrabold text-navy-900 mb-1">Custom</p>
+                        <p class="text-[10px] uppercase font-bold text-charcoal-500 tracking-wider mb-8">Based on Scope</p>
+                        
+                        <a href="#cta" class="block w-full py-2.5 rounded-full border border-slate-300 text-sm font-bold text-charcoal-700 hover:bg-slate-50 transition-colors">
+                            <span class="id-text">Diskusi Harga</span><span class="en-text">Discuss Pricing</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 10. FAQ ================= -->
+        <section id="faq" class="py-20 bg-slate-50 border-y border-slate-100">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-extrabold text-navy-900 tracking-tight">FAQ</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden transition-colors hover:border-purple-300 shadow-sm">
+                        <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                            <span class="font-bold text-navy-900 text-sm">
+                                <span class="id-text">Apakah bisa untuk posisi remote full-time?</span>
+                                <span class="en-text">Can this be for a full-time remote position?</span>
+                            </span>
+                            <i class="fas fa-chevron-down text-purple-600 faq-icon text-sm"></i>
+                        </button>
+                        <div class="faq-content px-6 text-charcoal-700 font-medium text-sm leading-relaxed">
+                            <span class="id-text">Bisa. Paket *Executive Assistant* dirancang khusus untuk kebutuhan *dedicated full-time* (160 jam/bulan) dengan jam operasional sesuai *timezone* bisnis Anda.</span>
+                            <span class="en-text">Yes. The Executive Assistant package is tailored for dedicated full-time needs (160 hours/month) with operational hours matching your business timezone.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden transition-colors hover:border-purple-300 shadow-sm">
+                        <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                            <span class="font-bold text-navy-900 text-sm">
+                                <span class="id-text">Apakah tersedia support untuk hari weekend (Sabtu/Minggu)?</span>
+                                <span class="en-text">Is there support available for weekends (Saturday/Sunday)?</span>
+                            </span>
+                            <i class="fas fa-chevron-down text-purple-600 faq-icon text-sm"></i>
+                        </button>
+                        <div class="faq-content px-6 text-charcoal-700 font-medium text-sm leading-relaxed">
+                            <span class="id-text">Standar jam kerja saya adalah Senin - Jumat (09.00 - 17.00 WIB). Namun, dukungan operasional pada akhir pekan dapat didiskusikan dengan penyesuaian biaya *custom*.</span>
+                            <span class="en-text">My standard working hours are Monday - Friday (09.00 - 17.00 WIB). However, weekend operational support can be discussed with custom cost adjustments.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden transition-colors hover:border-purple-300 shadow-sm">
+                        <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                            <span class="font-bold text-navy-900 text-sm">
+                                <span class="id-text">Bagaimana sistem pelaporan kerjanya?</span>
+                                <span class="en-text">How is the work reporting system?</span>
+                            </span>
+                            <i class="fas fa-chevron-down text-purple-600 faq-icon text-sm"></i>
+                        </button>
+                        <div class="faq-content px-6 text-charcoal-700 font-medium text-sm leading-relaxed">
+                            <span class="id-text">Saya menggunakan *time tracker* untuk mencatat jam kerja transparan, serta memberikan laporan *summary* (mingguan) berisi daftar *task* yang selesai melalui Slack/Email/Notion.</span>
+                            <span class="en-text">I use a time tracker to record transparent working hours and provide a summary report (weekly) listing completed tasks via Slack/Email/Notion.</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden transition-colors hover:border-purple-300 shadow-sm">
+                        <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                            <span class="font-bold text-navy-900 text-sm">
+                                <span class="id-text">Bagaimana sistem pembayarannya?</span>
+                                <span class="en-text">How is the payment system?</span>
+                            </span>
+                            <i class="fas fa-chevron-down text-purple-600 faq-icon text-sm"></i>
+                        </button>
+                        <div class="faq-content px-6 text-charcoal-700 font-medium text-sm leading-relaxed">
+                            <span class="id-text">Pembayaran dilakukan secara bulanan (Retainer) di awal bulan berjalan. Pembayaran bisa dilakukan via Bank Transfer lokal maupun *platform payment gateway* internasional (untuk klien luar negeri).</span>
+                            <span class="en-text">Payment is made monthly (Retainer) at the beginning of the active month. Payments can be made via local Bank Transfer or international payment gateways.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 11. FINAL CTA ================= -->
+        <section id="cta" class="py-24 bg-white relative">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-mesh-gradient rounded-[3rem] p-10 md:p-16 lg:p-20 text-center relative overflow-hidden shadow-2xl border border-navy-800">
+                    
+                    <!-- Glass layer inner -->
+                    <div class="absolute inset-0 bg-white/5 backdrop-blur-sm z-0"></div>
+                    
+                    <div class="relative z-10 max-w-2xl mx-auto">
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight">
+                            <span class="id-text">Butuh Virtual Assistant yang Profesional & Produktif?</span>
+                            <span class="en-text">Need a Professional & Productive Virtual Assistant?</span>
+                        </h2>
+                        <p class="text-slate-300 mb-10 leading-relaxed text-sm md:text-base font-medium max-w-lg mx-auto">
+                            <span class="id-text">Fokus mengembangkan *core business* Anda, sementara detail operasional dan administratif harian dibantu dengan efisien.</span>
+                            <span class="en-text">Focus on growing your core business, while daily operational and administrative details are handled efficiently.</span>
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row justify-center gap-4">
+                            <a href="https://wa.link/i8w855" target="_blank" class="px-10 py-4 font-bold rounded-full text-navy-900 bg-white hover:bg-slate-100 transition-all shadow-glow-cyan transform hover:-translate-y-1 text-sm flex items-center justify-center">
+                                <i class="far fa-calendar-check mr-2"></i> Schedule Free Call
+                            </a>
+                            <a href="https://wa.link/i8w855" target="_blank" class="px-10 py-4 font-bold rounded-full text-white bg-white/10 border border-white/20 hover:bg-white/20 transition-all flex items-center justify-center text-sm shadow-sm backdrop-blur">
+                                <i class="fab fa-whatsapp text-cyan-400 mr-2 text-lg"></i> Chat WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= 12. FOOTER ================= -->
+    <footer class="bg-navy-950 pt-16 pb-8 border-t-[6px] border-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Top Footer -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12 border-b border-navy-800 pb-12">
+                <!-- Brand -->
+                <div class="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
+                    <a href="#" class="flex items-center gap-3 mb-6 group">
+                        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-cyan-400 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-sm shrink-0">
+                            SA
+                        </div>
+                        <div class="flex flex-col text-left">
+                            <span class="font-extrabold text-xl tracking-tight leading-none text-white">Sarah Aulia</span>
+                            <span class="text-[9px] font-bold text-cyan-400 uppercase tracking-[0.25em] mt-0.5">Virtual Assistant</span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-slate-400 font-medium leading-relaxed mb-6 max-w-sm">
+                        <span class="id-text">*High-value digital talent* yang siap mendukung produktivitas dan skalabilitas bisnis Anda melalui layanan VA profesional.</span>
+                        <span class="en-text">*High-value digital talent* ready to support your business productivity and scalability through professional VA services.</span>
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 border border-navy-700 flex items-center justify-center text-slate-300 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-colors shadow-sm"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 border border-navy-700 flex items-center justify-center text-slate-300 hover:text-white hover:bg-purple-600 hover:border-purple-600 transition-colors shadow-sm"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 border border-navy-700 flex items-center justify-center text-slate-300 hover:text-white hover:bg-cyan-500 hover:border-cyan-500 transition-colors shadow-sm"><i class="far fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="md:col-span-3 md:col-start-6 text-center md:text-left">
+                    <h4 class="font-extrabold text-white mb-5 text-sm uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-4 text-sm font-medium text-slate-400">
+                        <li><a href="#tentang" class="hover:text-cyan-400 transition-colors"><span class="id-text">Profile Sarah</span><span class="en-text">Sarah's Profile</span></a></li>
+                        <li><a href="#layanan" class="hover:text-cyan-400 transition-colors"><span class="id-text">Layanan</span><span class="en-text">Services Offered</span></a></li>
+                        <li><a href="#portfolio" class="hover:text-cyan-400 transition-colors"><span class="id-text">Portfolio</span><span class="en-text">Project Portfolio</span></a></li>
+                        <li><a href="#faq" class="hover:text-cyan-400 transition-colors">FAQ & Policies</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div class="md:col-span-4 text-center md:text-left flex flex-col">
+                    <h4 class="font-extrabold text-white mb-5 text-sm uppercase tracking-wider">Contact Info</h4>
+                    <ul class="space-y-4 text-sm font-medium text-slate-400 inline-block text-left">
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-purple-400 text-lg w-5 text-center"></i> <span>hello@sarahaulia.com</span></li>
+                        <li class="flex items-center gap-3"><i class="fab fa-whatsapp text-purple-400 text-lg w-5 text-center"></i> <span>+62 812-3456-7890</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-globe text-purple-400 text-lg mt-0.5 w-5 text-center"></i> <span>Based in Jakarta (WIB/GMT+7)</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Trust Banner -->
+            <div class="w-full mb-8 flex justify-center">
+                <div class="inline-flex flex-wrap justify-center gap-x-6 gap-y-3 bg-navy-900 border border-navy-800 px-6 py-3 rounded-full text-[10px] sm:text-xs text-slate-300 font-bold uppercase tracking-widest shadow-sm">
+                    <span class="flex items-center"><i class="fas fa-laptop-house text-cyan-400 mr-1.5"></i> Remote Ready</span>
+                    <span class="hidden sm:inline text-navy-700">|</span> 
+                    <span class="flex items-center"><i class="fas fa-bolt text-purple-400 mr-1.5"></i> Productivity Support</span>
+                    <span class="hidden sm:inline text-navy-700">|</span> 
+                    <span class="flex items-center"><i class="fas fa-robot text-blue-400 mr-1.5"></i> AI-Assisted Workflow</span>
+                </div>
+            </div>
+            
+            <!-- Bottom -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left pt-4">
+                <div class="flex flex-col items-center md:items-start gap-1">
+                    <div class="text-xs text-slate-500 font-bold" id="copyright-text">
+                        &copy; <span id="current-year"></span> UP2 WebKit by UP2 Digi-App. All rights reserved.
+                    </div>
+                    <a href="https://wa.link/i8w855" target="_blank" class="text-[9px] font-bold text-cyan-500 hover:text-cyan-400 transition-colors uppercase tracking-widest mt-1">Part of UP2 Digital Ecosystem</a>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-slate-500 font-bold">Built with UP2 WebKit</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= 13. FLOATING WHATSAPP ================= -->
+    <div class="fixed bottom-8 right-6 z-[100] flex flex-col items-end gap-2 group">
+        <!-- Tooltip -->
+        <div class="bg-navy-900 text-white text-[10px] font-bold px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0 relative uppercase tracking-wider border border-navy-800">
+            Chat Virtual Assistant
+            <div class="absolute -bottom-1 right-5 w-2 h-2 bg-navy-900 rotate-45 border-r border-b border-navy-800"></div>
+        </div>
+        <!-- Button -->
+        <a href="https://wa.link/i8w855" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-[#1EBE5D] transition-colors relative animate-pulse-wa group-hover:scale-110 transform duration-300">
+            <i class="fab fa-whatsapp text-3xl relative z-10"></i>
+        </a>
+    </div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        // Set default Language
+        document.body.classList.remove('lang-en');
+
+        // Language Switcher Logic
+        function switchLang(lang, e) {
+            if(e) e.preventDefault();
+            
+            if (lang === 'en') {
+                document.body.classList.add('lang-en');
+            } else {
+                document.body.classList.remove('lang-en');
+            }
+            
+            // Update styling for desktop buttons
+            const btnEnDesk = document.getElementById('btn-en-desk');
+            const btnIdDesk = document.getElementById('btn-id-desk');
+            
+            if(lang === 'en') {
+                btnEnDesk.classList.add('text-purple-600');
+                btnEnDesk.classList.remove('text-charcoal-700', 'hover:text-purple-600');
+                btnIdDesk.classList.remove('text-purple-600');
+                btnIdDesk.classList.add('text-charcoal-700', 'hover:text-purple-600');
+            } else {
+                btnIdDesk.classList.add('text-purple-600');
+                btnIdDesk.classList.remove('text-charcoal-700', 'hover:text-purple-600');
+                btnEnDesk.classList.remove('text-purple-600');
+                btnEnDesk.classList.add('text-charcoal-700', 'hover:text-purple-600');
+            }
+
+            // Update styling for mobile buttons
+            const btnEnMob = document.getElementById('btn-en-mob');
+            const btnIdMob = document.getElementById('btn-id-mob');
+            
+            if(lang === 'en') {
+                btnEnMob.classList.add('text-purple-600');
+                btnEnMob.classList.remove('text-charcoal-700', 'hover:text-purple-600');
+                btnIdMob.classList.remove('text-purple-600');
+                btnIdMob.classList.add('text-charcoal-700', 'hover:text-purple-600');
+            } else {
+                btnIdMob.classList.add('text-purple-600');
+                btnIdMob.classList.remove('text-charcoal-700', 'hover:text-purple-600');
+                btnEnMob.classList.remove('text-purple-600');
+                btnEnMob.classList.add('text-charcoal-700', 'hover:text-purple-600');
+            }
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar Scroll Interaction
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('scrolled');
+                nav.classList.add('py-4');
+            }
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                if (!targetId) return;
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const y = targetElement.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+                const mobileMenu = document.getElementById('mobile-menu');
+                if(mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // FAQ Accordion Logic
+        const faqButtons = document.querySelectorAll('.faq-btn');
+        faqButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Close all other
+                faqButtons.forEach(otherBtn => {
+                    if (otherBtn !== btn) {
+                        otherBtn.nextElementSibling.classList.remove('open');
+                        otherBtn.querySelector('.faq-icon').classList.remove('open');
+                        otherBtn.classList.remove('text-purple-600');
+                    }
+                });
+
+                // Toggle current
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('.faq-icon');
+                
+                content.classList.toggle('open');
+                icon.classList.toggle('open');
+                
+                if (content.classList.contains('open')) {
+                    this.classList.add('text-purple-600');
+                } else {
+                    this.classList.remove('text-purple-600');
+                }
+            });
+        });
+
+        // Dynamic Year for Copyright
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
